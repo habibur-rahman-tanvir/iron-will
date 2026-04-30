@@ -1,9 +1,8 @@
+import { RouterProvider } from "react-router";
+import { router } from "./router.tsx";
+
 const App = () => {
-  return (
-    <div>
-      <h1 className="text-center text-4xl font-bold mt-2">Iron Will</h1>
-    </div>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;
