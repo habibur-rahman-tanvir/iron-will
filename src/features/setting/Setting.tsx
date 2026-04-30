@@ -1,4 +1,5 @@
 import ActionBar from "../../shared/components/ActionBar";
+import ThemeButton from "./components/ThemeButton";
 
 const Setting = () => {
   return (
@@ -7,8 +8,9 @@ const Setting = () => {
         <ActionBar title="Setting" allowBackpress={true} />
       </div>
 
-      <div className="flex-1">
-        <p>Setting</p>
+      <div className="flex-1 dark:bg-gray-800">
+        <ThemeButton />
+        <p>Start date and time</p>
       </div>
     </div>
   );
