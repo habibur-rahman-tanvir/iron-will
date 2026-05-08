@@ -29,17 +29,17 @@ export const useCounter = () => {
           <div className="p-2 bg-white rounded-lg shadow">
             <h1 className="text-2xl font-semibold">Are you sure?</h1>
             <p className="text-xl font-medium mb-1.5 text-gray-500">
-              You want to reset counter?
+              You want to {list.length > 0 ? "reset" : "start"} counter?
             </p>
             <div className="flex justify-end gap-1">
               <button
-                className="px-3 py-0.5 bg-gray-200 rounded-md text-black/80"
+                className="px-3 py-0.5 active:scale-90 active:opacity-90 bg-gray-200 rounded-md text-black/80"
                 onClick={onClose}
               >
                 No
               </button>
               <button
-                className="px-3 py-0.5 text-white bg-teal-700 rounded-md"
+                className="px-3 py-0.5 active:scale-90 active:opacity-90 text-white bg-teal-700 rounded-md"
                 onClick={() => {
                   setList((prev) => {
                     const newList: List = [...prev, Date.now()];
@@ -61,10 +61,14 @@ export const useCounter = () => {
   useEffect(() => {
     if (list.length < 1) return;
 
-    setTimeout(() => {
+    const timerId = setTimeout(() => {
       const x = extractDateTime(list.at(-1));
       setDaysHoursMinsSec(x);
     }, 500);
+
+    return () => {
+      clearTimeout(timerId);
+    };
   }, [list, daysHoursMinsSec]);
 
   return {
