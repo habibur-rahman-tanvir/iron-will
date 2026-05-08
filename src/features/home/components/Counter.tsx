@@ -3,19 +3,24 @@ import {
   CircularProgressbarWithChildren,
 } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import { PiClockCounterClockwiseBold } from "react-icons/pi";
 import { VscRocket } from "react-icons/vsc";
 import { isThemeDark } from "../../../utilities/theme";
-import { useCounter } from "../hook/useCounter";
+import { useCounter } from "../hook/counter.hook";
+import { PiClockCounterClockwiseBold } from "react-icons/pi";
 
 const Counter = () => {
-  const { hasRunning, handleStartOrReset } = useCounter();
+  const {
+    MAX_PROGRESS,
+    runningStatus,
+    handleReset,
+    daysHoursMinsSec: { days, hours, minutes, seconds, currentProgress },
+  } = useCounter();
 
   return (
     <div className="relative">
       <CircularProgressbarWithChildren
-        maxValue={100}
-        value={87}
+        maxValue={MAX_PROGRESS}
+        value={currentProgress}
         strokeWidth={3}
         styles={buildStyles({
           strokeLinecap: "butt",
@@ -23,15 +28,19 @@ const Counter = () => {
         })}
       >
         <div className="flex flex-col items-center gap-3">
-          <p className="text-3xl font-bold dark:text-white">2 days</p>
-          <p className="text-xl text-gray-600 dark:text-gray-300">00:00:00</p>
+          <p className="text-3xl font-bold dark:text-white">{days} days</p>
+          <p className="text-xl text-gray-600 dark:text-gray-300">
+            {hours.toString().padStart(2, "0")}:
+            {minutes.toString().padStart(2, "0")}:
+            {seconds.toString().padStart(2, "0")}
+          </p>
         </div>
       </CircularProgressbarWithChildren>
       <button
         className="absolute bottom-0 right-0 px-4 py-1 text-2xl text-white bg-linear-to-r ring-1 active:scale-95 active:opacity-75 ring-black from-pink-800 to-red-600 rounded-2xl"
-        onClick={handleStartOrReset}
+        onClick={handleReset}
       >
-        {!hasRunning ? <VscRocket /> : <PiClockCounterClockwiseBold />}
+        {!runningStatus ? <VscRocket /> : <PiClockCounterClockwiseBold />}
       </button>
     </div>
   );

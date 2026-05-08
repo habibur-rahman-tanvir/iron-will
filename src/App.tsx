@@ -1,6 +1,7 @@
 import { RouterProvider } from "react-router";
 import { router } from "./router.tsx";
 import { useEffect } from "react";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 const App = () => {
   useEffect(() => {
