@@ -10,10 +10,6 @@ const Setting = () => {
 
       <div className="flex-1 dark:bg-gray-800">
         <ThemeButton />
-        <p>Start date and time</p>
-        <p className="active:opacity-60" onClick={() => localStorage.clear()}>
-          Clear
-        </p>
       </div>
     </div>
   );

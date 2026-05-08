@@ -16,16 +16,18 @@ const History = () => {
         </ActionBar>
       </div>
 
-      <div className="flex-1 overflow-y-scroll">
+      <div className="flex-1 overflow-y-scroll dark:bg-black">
         {histories.reverse().map((item, index) => {
           return (
             <div
               key={index}
-              className="px-2 pt-1 pb-2.5 border-b border-b-gray-400 mx-0.5"
+              className="px-2 dark:bg-gray-950 pt-2 pb-6 border-b border-b-gray-400 mx-0.5"
             >
-              <p className="font-bold text-xl">{item.different}</p>
+              <p className="font-mono text-xl font-bold dark:text-white/80">
+                {item.different}
+              </p>
               <div>
-                <p className="font-light text-gray-500">
+                <p className="font-light text-gray-500 dark:text-gray-400">
                   {item.from} -{">"} {item.to}
                 </p>
               </div>

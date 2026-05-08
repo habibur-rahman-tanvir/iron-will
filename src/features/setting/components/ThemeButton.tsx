@@ -16,8 +16,11 @@ const ThemeButton = () => {
 
   return (
     <div className="p-1.5">
-      <label className="flex justify-between items-center" htmlFor="btn-theme">
-        <span>Dark Theme</span>
+      <label
+        className="flex items-center justify-between text-xl font-semibold"
+        htmlFor="btn-theme"
+      >
+        <span className="dark:text-white">Dark Theme</span>
         <span
           aria-checked={isChecked}
           className="bg-gray-400 w-10 h-5 rounded-full relative before:absolute before:aspect-square before:-inset-y-0.5 before:rounded-full left-0 aria-checked:before:right-0 before:bg-blue-500"
