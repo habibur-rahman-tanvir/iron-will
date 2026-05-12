@@ -16,7 +16,7 @@ const History = () => {
         </ActionBar>
       </div>
 
-      <div className="flex-1 overflow-y-scroll dark:bg-black">
+      <div className="flex-1 relative empty:after:content-['No_History'] after:absolute after:text-gray-400 after:font-bold after:italic after:top-1/3 after:text-3xl after:inset-x-0 after:text-center overflow-y-scroll dark:bg-black">
         {histories.reverse().map((item, index) => {
           return (
             <div
