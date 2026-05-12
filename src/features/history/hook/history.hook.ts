@@ -10,8 +10,10 @@ export const useHistory = () => {
   const histories = getHistory(list);
 
   const handleClearHistory = () => {
-    setListToStorage([list.at(-1)]);
-    setList([list.at(-1)]);
+    if (list.length > 0) {
+      setListToStorage([list.at(-1)!]);
+      setList([list.at(-1)!]);
+    }
   };
 
   return {

@@ -18,7 +18,7 @@ export const useCounter = () => {
   const [daysHoursMinsSec, setDaysHoursMinsSec] =
     useState<DateTimeExtractedType>(
       list.length > 0
-        ? extractDateTime(list.at(-1))
+        ? extractDateTime(list.at(-1)!)
         : { days: 0, hours: 0, minutes: 0, seconds: 0, currentProgress: 0 },
     );
 
@@ -62,7 +62,7 @@ export const useCounter = () => {
     if (list.length < 1) return;
 
     const timerId = setTimeout(() => {
-      const x = extractDateTime(list.at(-1));
+      const x = extractDateTime(list.at(-1)!);
       setDaysHoursMinsSec(x);
     }, 500);
 
